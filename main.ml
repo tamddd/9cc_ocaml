@@ -25,22 +25,22 @@ let main argv =
       else
         let number = (String.sub s num_pointer (pointer - num_pointer)) in
             (lst @ [number]);;
-    (*
+    
     print_endline ".intel_syntax noprefix";
     print_endline ".globl main";
     print_endline "main:";
-    print_endline ("  mov rax, " ^ string_of_int (int_of_string Sys.argv.(1)));
-    *)
     
-    
-    let empty_list = [] in
-    let ans = strtol 0 0 p empty_list in
-    let rec print_lst lst = match lst with 
-    [] -> ()
-    | first :: rest -> begin 
-      print_string (first ^ " \n");
+    let lst = (strtol 0 0 p []) in 
+    print_endline ("  mov rax, " ^ (List.hd lst));
+    let rec print_lst l = match l with
+      | [] -> print_endline "  ret"
+      | first :: rest ->
+        if first = "add" then 
+          print_string "add rax, rdi, "
+        else if first = "sub" then
+          print_string "sub rax, rdi,"
+        else print_endline first;
       print_lst rest
-    end in print_lst ans;
-    print_endline "  ret";;
+      in print_lst (List.tl lst);;
 
 let () = main()
