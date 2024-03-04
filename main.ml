@@ -1,3 +1,43 @@
+type tokenKind = 
+TK_RESERVED of int
+| TK_NUM of int
+| TK_EOF
+
+type token = {
+  mutable kind : tokenKind;
+  mutable str : string;
+  mutable value : int;
+  mutable str_ : string
+}
+(*// エラーを報告するための関数
+// printfと同じ引数を取る*)
+let error fmt = 
+  ""
+(*// 次のトークンが期待している記号のときには、トークンを1つ読み進めて
+// 真を返す。それ以外の場合には偽を返す。*)
+let comsume op = 
+  ()
+
+  (*// 次のトークンが期待している記号のときには、トークンを1つ読み進める。
+// それ以外の場合にはエラーを報告する。*)
+  let except op = 
+    ()
+
+  (*// 次のトークンが数値の場合、トークンを1つ読み進めてその数値を返す。
+// それ以外の場合にはエラーを報告する。*)
+let except_number = ()
+
+let at_eof =
+  ()
+
+  (*// 新しいトークンを作成してcurに繋げる*)
+let new_token kind cur str_ = 
+  ()
+
+  (*// 入力文字列pをトークナイズしてそれを返す*)
+let tokenize p = 
+  ()
+
 (*main関数*)
 let main argv = 
   (*引数の個数チェック*)
